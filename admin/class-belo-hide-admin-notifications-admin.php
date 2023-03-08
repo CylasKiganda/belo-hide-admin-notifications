@@ -134,13 +134,13 @@ class Belo_Hide_Admin_Notifications_Admin {
       ">
       <div class="bhan-wrapper" >
          <div class="bhan-header mdb-header bg-brand-light flex-container">
-            <svg width="52" height="52" viewBox="0 0 52 52" class="medallion" style="
+            <img width="52" height="52" viewBox="0 0 52 52" class="medallion" style="
                -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,.2));
                filter: drop-shadow(0 1px 4px rgba(0,0,0,.2));
                margin-right: 1rem;
                width: 52px;
                height: 52px;
-               "> </svg>
+               " src="/"/>
             <h1 style="
                display: inline-block;
                font-size: 1.3125rem;

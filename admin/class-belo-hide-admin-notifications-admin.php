@@ -153,7 +153,7 @@ class Belo_Hide_Admin_Notifications_Admin {
     margin-bottom: 50px;
     margin-top: 30px;
     height: 40px;
-    background: #cfd9dd url(<?php echo plugin_dir_url( __FILE__ ) .'/banner-belo.png'; ?>) no-repeat;
+    background: #cfd9dd url(<?php echo plugin_dir_url( __FILE__ ) .'/belo.png'; ?>) no-repeat;
     display: flex;
     align-items: center;
     padding-right: -23px !important;

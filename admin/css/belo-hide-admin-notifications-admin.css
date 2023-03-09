@@ -16,8 +16,7 @@
     filter: drop-shadow(0 1px 4px rgba(0,0,0,.2));
     width: 100px;
     height: 100px;
-    border-radius: 50px;
-    margin: 10px;
+    border-radius: 50px; 
 }
 .toplevel_page_belo-hide-notifications-settings-page #wpcontent {
     padding-left: 0px !important;

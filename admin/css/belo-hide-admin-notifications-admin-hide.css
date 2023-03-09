@@ -1,0 +1,21 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+ 
+body.wp-admin:not(.theme-editor-php) .notice:not(.updated),
+body.wp-admin .update-nag,
+body.wp-admin #adminmenu .awaiting-mod,
+#adminmenu .update-plugins,
+#message.woocommerce-message,
+body.wp-admin .plugin-update.colspanchange,
+.notice.elementor-message.elementor-message-dismissed,
+.notice {
+    display: none !important;
+}
+
+body.wp-admin #display-notifications .notice,
+body.wp-admin #display-notifications .update-nag,
+#display-notifications #message.woocommerce-message {
+    display: none !important;
+}

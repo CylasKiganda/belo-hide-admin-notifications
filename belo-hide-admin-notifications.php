@@ -13,7 +13,7 @@
  * @package           Belo_Hide_Admin_Notifications
  *
  * @wordpress-plugin
- * Plugin Name:       Hide Admin Notifications
+ * Plugin Name:       Hide Admin Dashboard Notifications
  * Plugin URI:        https://#
  * Description:       Hides admin notifications for either specific admin users or for all admin users
  * Version:           1.0.0
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'BELO_HIDE_ADMIN_NOTIFICATIONS_VERSION', '1.0.11111' );
+define( 'BELO_HIDE_ADMIN_NOTIFICATIONS_VERSION', '1.0.111111111111111' );
 
 /**
  * The code that runs during plugin activation.

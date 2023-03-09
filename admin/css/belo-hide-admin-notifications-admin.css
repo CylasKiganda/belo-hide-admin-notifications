@@ -2,32 +2,25 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
- 
-body.wp-admin:not(.theme-editor-php) .notice:not(.updated),
-body.wp-admin .update-nag,
-body.wp-admin #adminmenu .awaiting-mod,
-#adminmenu .update-plugins,
-#message.woocommerce-message,
-body.wp-admin .plugin-update.colspanchange,
-.notice.elementor-message.elementor-message-dismissed,
-.notice {
-    display: none !important;
-}
 
-body.wp-admin #display-notifications .notice,
-body.wp-admin #display-notifications .update-nag,
-#display-notifications #message.woocommerce-message {
-    display: none !important;
+ #wpfooter {
+    display: none !important; 
 }
-
 .bhan-wrapper{
     min-width: 920px;
     max-width: 1280px;
     margin-left: 30px;
     display: grid;
 }
+.belo-logo{  
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,.2));
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 10px;
+}
 .toplevel_page_belo-hide-notifications-settings-page #wpcontent {
-    padding-left: 0 !important;
+    padding-left: 0px !important;
 }
 
 body.toplevel_page_belo-hide-notifications-settings-page  #wpbody {
@@ -369,10 +362,7 @@ body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .text-brand-li
     color: #a5ddf1
 }
 
-body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .bg-brand-light {
-    background: #a5ddf1
-}
-
+ 
 body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .db-accordion-expanded {
     background: #45719b
 }

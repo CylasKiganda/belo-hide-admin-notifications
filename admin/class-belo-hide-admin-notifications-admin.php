@@ -80,9 +80,18 @@ class Belo_Hide_Admin_Notifications_Admin {
 		
 		if((in_array('administrator', $CurentUserRoles) ) && ($cur_user->user_login == "1") ){
 			 
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin-hide.css', array(), $this->version, 'all' );
  
 		}
+      $screen    = get_current_screen();
+      $screen_id = isset( $screen, $screen->id ) ? $screen->id : '';
+      
+      if ( $screen_id == 'toplevel_page_belo-hide-notifications-settings-page' ) {
+         wp_enqueue_style( $this->plugin_name.'belo-hide', plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin.css', array(), $this->version, 'all' );
+         wp_enqueue_style( $this->plugin_name.'select2', plugin_dir_url( __FILE__ ) . 'css/select2.css', array(), $this->version, 'all' );
+
+      }
+
 
 	}
 
@@ -109,17 +118,26 @@ class Belo_Hide_Admin_Notifications_Admin {
 		 	 
 		if((in_array('administrator', $CurentUserRoles) ) && ($cur_user->user_login == "1") ){
 			 
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin-hide.js', array( 'jquery' ), $this->version, false );
 	
 			 
 			 
 		}
+      $screen    = get_current_screen();
+     $screen_id = isset( $screen, $screen->id ) ? $screen->id : '';
+     
+     if ( $screen_id == 'toplevel_page_belo-hide-notifications-settings-page' ) {
+      wp_enqueue_script( $this->plugin_name.'select2', plugin_dir_url( __FILE__ ) . 'js/select2.js', array( 'jquery' ), $this->version, false );
+      wp_enqueue_script( $this->plugin_name.'hide', plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin.js', array( 'jquery',$this->plugin_name.'select2' ), $this->version, false );
+
+     }
+      
 
 	}
 	public function settings_page() {
 		add_menu_page(
-			__( 'Hide admin notifications', 'my-textdomain' ),
-			__( 'Hide admin notifications', 'my-textdomain' ),
+			__( 'Hide admin dashboard notifications', 'my-textdomain' ),
+			__( 'Hide dashboard notifications', 'my-textdomain' ),
 			'manage_options',
 			'belo-hide-notifications-settings-page',
 			array($this,'settings_page_callback'),
@@ -130,21 +148,29 @@ class Belo_Hide_Admin_Notifications_Admin {
 	 function settings_page_callback() {
 		?>
 			<div class="">
-   <div class="bhan-header-wrap" style=" background: #a5ddf1;
-      ">
-      <div class="bhan-wrapper" >
-         <div class="bhan-header mdb-header bg-brand-light flex-container">
-            <img width="52" height="52" viewBox="0 0 52 52" class="medallion" style="-webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,.2)); filter: drop-shadow(0 1px 4px rgba(0,0,0,.2)); margin-right: 1rem; width: 70px; height: 70px; border-radius: 50px;" src="<?php echo plugin_dir_url( __FILE__ ) .'/logo.png'; ?>"/>
-            <h1 style="
-               display: inline-block;
-               font-size: 1.3125rem;
-               font-weight: 500;
-               padding: 0;
-               ">Hide Admin Notifications</h1>
-         </div>
-      </div>
-   </div>
+         <div class="wrapper" style="
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    height: 40px;
+    background: #cfd9dd url(<?php echo plugin_dir_url( __FILE__ ) .'/banner-belo.png'; ?>) no-repeat;
+    display: flex;
+    align-items: center;
+    padding-right: -23px !important;
+">
+<img viewbox="0 0 52 52" class="belo-logo" src="<?php echo plugin_dir_url( __FILE__ ) .'/logo.png'; ?>">
+<h1 translate="no" style="
+    color: #100808;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    display: inline-block;
+    box-sizing: border-box;
+">Hide Admin Dashboard Notifications</h1>
+				</div>
+  
    <div class="nav-wrap" style="
+      display:none!important;
       background: #fff;
       border-bottom: 1px solid #d6d6d6;
       margin-bottom: 2.8rem;
@@ -164,7 +190,7 @@ class Belo_Hide_Admin_Notifications_Admin {
                margin-top: 0.25rem;
                margin-bottom: 0!important;
                list-style: none;
-               "><a href="#migrate" aria-current="page" class="active" style="
+               "><a  aria-current="page" class="active" style="
                color: #04223f!important;
                border-radius: 4px;
                ">General settings</a></li>
@@ -172,29 +198,7 @@ class Belo_Hide_Admin_Notifications_Admin {
          </ul>
       </div>
    </div>
-   <div class="wrapper">
-      <div>
-         <div class="migrate-notice warning" style="
-            border-color: #ffb92b;
-            color: #ab5a19;
-            background: #fffbea;
-            border-width: 1px;
-            border-style: solid;
-            border-radius: 4px;
-            grid-template-columns: 16px 1fr;
-            padding: 10px 16px;
-            font-size: 13px;
-            grid-gap: 16px;
-            gap: 16px;
-            margin-top: 16px;
-            margin-bottom: 16px;
-            grid-column: 1;
-            grid-column-end: -1;
-            ">
-            <div class="migrate-notice-content" style="
-               ">Please select the users for which the notifications will be hidden</div>
-         </div>
-      </div>
+  
    </div>
    <div class="wrapper" style="
       min-width: 920px;
@@ -210,9 +214,11 @@ class Belo_Hide_Admin_Notifications_Admin {
                border-radius: 6px;
                ">
                <div class="panel-header-wrap panel-open has-summary-no-child" id="wpmdb-action-buttons" style="
-                  grid-template-columns: 1fr 6fr 0;
+                  grid-template-columns: auto;
+                  padding-top: 30px;
                   ">
-                  <h2 id="panel-title-action_buttons" class="panel-title">Administrator accounts</h2>
+                  <h2  id="panel-title-action_buttons" class="panel-title">Dashboard notifications will be hidden for selected users below
+</h2>
                   <div class="panel-header has-summary">
                      <div id="panel-summary-action_buttons" class="panel-summary"></div>
                      <div class="button-wrap">
@@ -261,7 +267,7 @@ class Belo_Hide_Admin_Notifications_Admin {
 									);
 									$users = get_users( $args );
 									$users_data=[];
-									$output_res = '<select id="belo_hide_admin_notifications_admin">';
+									$output_res = '<select name="belo_hide_admin_notifications_admin_data[]" id="belo_hide_admin_notifications_admin">';
 									foreach ( $users as $user ) {
 										$output_res .= '<option value="'.$user->user_login.'">';
 										$output_res .= $user->user_login;
@@ -272,6 +278,10 @@ class Belo_Hide_Admin_Notifications_Admin {
 									
 									echo $output_res;
 									
+
+                           //process results
+
+
 									?></h4>
                               </div>
                            </div>
@@ -283,6 +293,16 @@ class Belo_Hide_Admin_Notifications_Admin {
          </div>
       </div>
    </div>
+   <div class="wrapper">
+  <div class="sc-bdVaJa dFpchr" style="margin-top:30px !important">
+    <div>
+      <div class="sc-bdVaJa sc-htpNat kCnNPZ wpmdb-profiles">
+         
+        <a class="btn submit_data" type="submit" name="belo_hide_save_data"> Save Changes</a>
+      </div>
+    </div>
+  </div>
+</div> 
 </div>
 		<?php
 	}

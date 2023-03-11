@@ -30,14 +30,14 @@
      */
     jQuery(document).ready(function ($) {
       
-        jQuery("#belo_hide_admin_notifications_admin").select2({
+        jQuery("#belo_hide_admin_notifications_admin_data").select2({
             placeholder: "", 
             multiple: true,
           });
 
-        $(document).on('click','.submit_data',function(){
-            alert('elo');
-        });
+        // $(document).on('click','.submit_data',function(){
+        //     alert('elo');
+        // });
   
        
       

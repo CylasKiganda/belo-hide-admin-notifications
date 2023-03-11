@@ -2,7 +2,24 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
-
+ .select2-container--default .select2-selection--multiple {
+     width: 600px!important;
+    border-radius: 8px !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    color: #fff;
+    background-color: #4e52a2 !important;
+    border-radius: 12px !important;
+    padding: 3px 30px 3px 11px !important;
+    border: 1px solid #4e52a2 !important;
+}
+.select2-container--default .select2-selection--multiple { 
+    padding: 4px 6px !important; 
+}
+.select2-container .select2-selection--multiple { 
+    min-height: 80px !important; 
+    margin-top: 30px !important;
+}
  #wpfooter {
     display: none !important; 
 }
@@ -14,9 +31,10 @@
 }
 .belo-logo{  
     filter: drop-shadow(0 1px 4px rgba(0,0,0,.2));
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50px; 
+    margin-left: -5px;
 }
 .toplevel_page_belo-hide-notifications-settings-page #wpcontent {
     padding-left: 0px !important;
@@ -278,7 +296,8 @@ body.toplevel_page_belo-hide-notifications-settings-page  #wpbody select {
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     border: 1px solid #d6d6d6;
     font-size: 13px;
-    background-position: calc(100% - 14px)
+    background-position: calc(100% - 14px);
+    
 }
 
 body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .container-shadow {
@@ -739,18 +758,18 @@ body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .accordion-pre
 }
 
 body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .btn {
-    background-color: #236de7;
+    background-color: #4e52a2 !important;
     color: #fff;
-    border-radius: 4px;
-    font-size: .8rem;
-    text-transform: uppercase;
+    border-radius: 4px !important;
+    font-size: .8rem !important;
+    text-transform: uppercase !important;
     font-weight: 700;
-    padding: 1.1rem 2.25rem;
-    border: 1px solid #236de7;
+    padding: 10px 80px !important;
+    border: 1px solid #4e52a2 !important;
     letter-spacing: .05rem;
     cursor: pointer;
     text-align: center;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .btn svg {
@@ -923,11 +942,10 @@ body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .btn-sm-icon {
 
 body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .notification {
     font-size: .8rem;
-    margin: .75rem 0;
-    box-shadow: 0 1px 8px 0 rgba(0,0,0,.05),0 1px 3px 0 rgba(0,0,0,.1);
+     box-shadow: 0 1px 8px 0 rgba(0,0,0,.05),0 1px 3px 0 rgba(0,0,0,.1);
     border-radius: 3px;
     padding: 1rem 1.5rem;
-    border-left: 5px solid #ffba00
+    border-left: 5px solid #17ff00;
 }
 
 body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .notification.old-profile-notice {
@@ -1075,8 +1093,8 @@ body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .action-button
 body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .action-buttons h4 {
     font-size: .85rem;
     font-weight: 500;
-    margin-top: 0;
-    margin-bottom: 1.75rem
+    margin-top: 0; 
+    margin-bottom: 3px !important;
 }
 
 @media(max-width: 1350px) {
@@ -3024,16 +3042,7 @@ body.toplevel_page_belo-hide-notifications-settings-page  #wpbody .dry-run-back-
     grid-template-columns: repeat(1,minmax(0,1fr));
     padding: 1rem 1.7rem 1.5rem 1.25rem
 }
-
-.actions-panel .action-buttons h4 {
-    flex: 1 1;
-    font-size: .8rem;
-    letter-spacing: 0;
-    font-weight: 500;
-    margin-top: 0;
-    margin-bottom: 1.75rem;
-    text-transform: uppercase
-}
+ 
 
 @media(max-width: 1350px) {
     .actions-panel .action-buttons h4 {

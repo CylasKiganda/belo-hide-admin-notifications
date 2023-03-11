@@ -76,13 +76,20 @@ class Belo_Hide_Admin_Notifications_Admin {
 		$CurentUserRoles = (array) $cur_user->roles;
 		//var_dump($user);
 		
-		
-		
-		if((in_array('administrator', $CurentUserRoles) ) && ($cur_user->user_login == "1") ){
+		$hide_selected_users_data=[];
+		$hide_selected_users_data = get_option('belo_hide_admin_notifications_admin_data');
+		if(!empty($hide_selected_users_data)){
+			if((in_array('administrator', $CurentUserRoles) ) && (in_array($cur_user->user_login, $hide_selected_users_data)) ){
 			 
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin-hide.css', array(), $this->version, 'all' );
- 
+				wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin-hide.css', array(), $this->version, 'all' );
+	 
+			}
 		}
+		else{
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin-hide.css', array(), $this->version, 'all' );
+
+		}
+		
       $screen    = get_current_screen();
       $screen_id = isset( $screen, $screen->id ) ? $screen->id : '';
       
@@ -115,15 +122,23 @@ class Belo_Hide_Admin_Notifications_Admin {
 		 */
 		$cur_user = wp_get_current_user();
 		$CurentUserRoles = (array) $cur_user->roles;
-		 	 
-		if((in_array('administrator', $CurentUserRoles) ) && ($cur_user->user_login == "1") ){
+		//var_dump($user);
+		
+		$hide_selected_users_data=[];
+		$hide_selected_users_data = get_option('belo_hide_admin_notifications_admin_data');
+
+		if(!empty($hide_selected_users_data)){
+			if((in_array('administrator', $CurentUserRoles) ) && (in_array($cur_user->user_login, $hide_selected_users_data)) ){
 			 
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin-hide.js', array( 'jquery' ), $this->version, false );
-	
-			 
-			 
+				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin-hide.js', array( 'jquery' ), $this->version, false );
+	 
+			}
 		}
-      $screen    = get_current_screen();
+		else{
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin-hide.js', array( 'jquery' ), $this->version, false );
+
+		}
+     $screen    = get_current_screen();
      $screen_id = isset( $screen, $screen->id ) ? $screen->id : '';
      
      if ( $screen_id == 'toplevel_page_belo-hide-notifications-settings-page' ) {
@@ -160,52 +175,27 @@ class Belo_Hide_Admin_Notifications_Admin {
 ">
 <img viewbox="0 0 52 52" class="belo-logo" src="<?php echo plugin_dir_url( __FILE__ ) .'/logo.png'; ?>">
 <h1 translate="no" style="
-    color: #100808;
+    color: #ffd600;
     font-size: 16px;
     font-weight: 700;
     text-align: left;
     display: inline-block;
     box-sizing: border-box;
+    padding-left: 40px;
 ">Hide Admin Dashboard Notifications</h1>
 				</div>
   
-   <div class="nav-wrap" style="
-      display:none!important;
-      background: #fff;
-      border-bottom: 1px solid #d6d6d6;
-      margin-bottom: 2.8rem;
-      ">
-      <div class="bhan-wrapper" >
-         <ul class="bhan-nav bg-white flex-container" style="
-            font-size: .75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            padding: 1.25rem 0 0;
-            align-items: baseline;
-            ">
-            <li class="nav-item-active" style="
-               margin-right: 1.7rem;
-               padding: 0.6rem 0.2rem 0.4rem;
-               border-bottom: 3px solid #000;
-               margin-top: 0.25rem;
-               margin-bottom: 0!important;
-               list-style: none;
-               "><a  aria-current="page" class="active" style="
-               color: #04223f!important;
-               border-radius: 4px;
-               ">General settings</a></li>
-             
-         </ul>
-      </div>
-   </div>
+  
   
    </div>
+
+   <form method="POST" action="">
    <div class="wrapper" style="
       min-width: 920px;
       max-width: 1280px;
       margin-left: 30px;
       ">
-      <div class="">
+      <div  >
          <div>
             <div class="action-panel shadow-div actions-panel " style="
                background: #fff;
@@ -217,29 +207,14 @@ class Belo_Hide_Admin_Notifications_Admin {
                   grid-template-columns: auto;
                   padding-top: 30px;
                   ">
-                  <h2  id="panel-title-action_buttons" class="panel-title">Dashboard notifications will be hidden for selected users below
+                  <h2  id="panel-title-action_buttons" class="panel-title">GENERAL SETTINGS
+
 </h2>
-                  <div class="panel-header has-summary">
-                     <div id="panel-summary-action_buttons" class="panel-summary"></div>
-                     <div class="button-wrap">
-                        <button aria-labelledby="panel-title-action_buttons" aria-describedby="panel-summary-action_buttons">
-                           <svg width="12px" height="10px" viewBox="0 0 12 7" class="open panel-arrow">
-                              <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                 <g id="accordion_collapsed_default_active" transform="translate(-1188.000000, -25.000000)" fill="#000000" fill-rule="nonzero">
-                                    <g id="arrow_down" transform="translate(1188.000000, 25.000000)">
-                                       <path d="M3.15926987,3.89259287 L8.05974363,8.83761866 C8.27477314,9.05412711 8.62315535,9.05412711 8.83872786,8.83761866 C9.05375738,8.6211102 9.05375738,8.26944382 8.83872786,8.05293536 L4.32695435,3.50027406 L8.83818486,-1.05238724 C9.05321437,-1.2688957 9.05321437,-1.62056207 8.83818486,-1.83761866 C8.62315535,-2.05412711 8.27423014,-2.05412711 8.05920063,-1.83761866 L3.15872687,3.10736145 C2.94700063,3.32163174 2.94700063,3.67882502 3.15926987,3.89259287 Z" id="arrow" transform="translate(6.000000, 3.500000) rotate(-90.000000) translate(-6.000000, -3.500000) "></path>
-                                    </g>
-                                 </g>
-                              </g>
-                           </svg>
-                        </button>
-                     </div>
-                  </div>
                </div>
                <div class="panel-open panel-body-wrap" style="
                   position: relative;
                   ">
-                  <div id="action_buttons" style="overflow: hidden; opacity: 1; height: 139px;">
+                  <div id="action_buttons" style="overflow: hidden; opacity: 1;">
                      <div class="open panel-body" style="
                         padding: 26px 22px;
                         background: #fff;
@@ -248,41 +223,59 @@ class Belo_Hide_Admin_Notifications_Admin {
                         grid-template-columns: none;
                         border-radius: 0 0 6px 6px;
                         ">
-                        <div class="action-buttons btn-section" style=" margin-bottom: 0!important; display: grid; grid-template-columns: repeat(1,minmax(0,1fr)); padding: 1rem 0em 1.5rem 0rem; ">
-                           <div class="action-row">
-                              <div class="action-button-group">
-                                 <h4 style="
-                                    flex: 1 1;
-                                    font-size: .8rem;
-                                    letter-spacing: 0;
-                                    font-weight: 500;
-                                    margin-top: 0;
-                                    margin-bottom: 1.75rem;
-                                    text-transform: uppercase;
-                                    "><?php 
+                        <div class="action-buttons btn-section" style=" margin-bottom: 0!important; display: grid; grid-template-columns: repeat(1,minmax(0,1fr)); padding: 0rem 0em 1.5rem 0rem; ">
+                           <div >
+                              <div >
+                                 <h4  ><?php 
 									$args = array(
 										'role'    => 'administrator',
 										'orderby' => 'user_nicename',
 										'order'   => 'ASC'
 									);
-									$users = get_users( $args );
-									$users_data=[];
-									$output_res = '<select name="belo_hide_admin_notifications_admin_data[]" id="belo_hide_admin_notifications_admin">';
-									foreach ( $users as $user ) {
-										$output_res .= '<option value="'.$user->user_login.'">';
-										$output_res .= $user->user_login;
+									$users_data = get_users( $args );
+
+									if(isset($_POST['belo_hide_admin_notifications_admin_data'])){
+                              $selectedusersOptions = $_POST['belo_hide_admin_notifications_admin_data'];
+                              Update_option('belo_hide_admin_notifications_admin_data',array_map( 'sanitize_text_field', $selectedusersOptions ));
+                              
+                              $success_alert = '<div class="container"> <div class="notification success"> 
+                                <span style=" color: #22c45c; ">Saved successfully!</span></div></div>';
+                              echo  $success_alert;
+                            }
+
+                           $selected_users_data = get_option('belo_hide_admin_notifications_admin_data');
+
+                            
+									$output_res = '<select name="belo_hide_admin_notifications_admin_data[]" id="belo_hide_admin_notifications_admin_data" multiple="multiple">';
+									foreach ( $users_data as $user ) {
+
+                              if(empty($selected_users_data)){
+                                 $selected_status = ' selected="selected" ';
+                              }
+                              else{
+
+                                 if(in_array($user->user_login,$selected_users_data)){
+                                    $selected_status = ' selected="selected" ';
+                                 }
+                                 else{
+                                    $selected_status = ' ';
+                                 }
+                                
+                              }
+
+										$output_res .= '<option '.$selected_status.' value="'.$user->user_login.'">';
+										$output_res .= $user->user_login;  
 										$output_res .= '</option>';
 									}
 
 									$output_res .= '</select>';
 									
 									echo $output_res;
-									
-
-                           //process results
-
-
+							
 									?></h4>
+                           <div>
+                              Select the admin accounts to hide the dashboard notifications
+                           </div>
                               </div>
                            </div>
                         </div>
@@ -294,17 +287,17 @@ class Belo_Hide_Admin_Notifications_Admin {
       </div>
    </div>
    <div class="wrapper">
-  <div class="sc-bdVaJa dFpchr" style="margin-top:30px !important">
-    <div>
-      <div class="sc-bdVaJa sc-htpNat kCnNPZ wpmdb-profiles">
-         
-        <a class="btn submit_data" type="submit" name="belo_hide_save_data"> Save Changes</a>
-      </div>
-    </div>
-  </div>
-</div> 
+      <div class="sc-bdVaJa dFpchr" style="margin-top:30px !important"> 
+       <input type="submit" value="Save" class="btn submit_data" > 
+         </div> 
+   </div> 
+   </form>
 </div>
 		<?php
+       
+      
+     
+      
 	}
 
 }

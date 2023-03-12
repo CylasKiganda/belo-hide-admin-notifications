@@ -187,7 +187,7 @@ class Belo_Hide_Admin_Notifications_Admin {
     align-items: center;
     padding-right: -23px !important;
 ">
-<img viewbox="0 0 52 52" class="belo-logo" src="<?php echo plugin_dir_url( __FILE__ ) .'logo.png'; ?>">
+<img viewbox="0 0 52 52" width="70" height="70" class="belo-logo" src="<?php echo plugin_dir_url( __FILE__ ) .'logo.png'; ?>">
 <h1 translate="no" style="
     color: #ffd600;
     font-size: 16px;
@@ -236,9 +236,10 @@ class Belo_Hide_Admin_Notifications_Admin {
                         border-radius: 0 0 6px 6px;
                         ">
                         <div class="action-buttons btn-section" style=" margin-bottom: 0!important; display: grid; grid-template-columns: repeat(1,minmax(0,1fr)); padding: 0rem 0em 1.5rem 0rem; ">
-                           <div >
+                        <h4 style=" margin: 0px !important; "><?php echo  __('Admin accounts', 'belo-hide-admin-notifications'); ?></h4>
+                        <div >
                               <div >
-                                 <h4  ><?php 
+                                 <h4  style=" margin-top: 0px !important; "><?php 
 									$args = array(
 										'role'    => 'administrator',
 										'orderby' => 'user_nicename',
@@ -250,8 +251,8 @@ class Belo_Hide_Admin_Notifications_Admin {
                               $selectedusersOptions = $_POST['belo_hide_admin_notifications_admin_data'];
                               Update_option('belo_hide_admin_notifications_admin_data',array_map( 'sanitize_text_field', $selectedusersOptions ));
                               
-                              $success_alert = '<div class="container"> <div class="notification success"> 
-                                <span style=" color: #22c45c; ">Saved successfully!</span></div></div>';
+                              $success_alert = '<div class="container" style=" position: absolute; left: 510px; top: 0; "> <div class="notification success"> 
+                                <span style=" color: #22c45c; ">'.__("Saved successfully!", "belo-hide-admin-notifications").'</span></div></div>';
                               echo  $success_alert;
                             }
 

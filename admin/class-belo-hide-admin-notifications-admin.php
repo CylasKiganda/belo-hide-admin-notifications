@@ -89,17 +89,9 @@ class Belo_Hide_Admin_Notifications_Admin {
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin-hide.css', array(), $this->version, 'all' );
 
 		}
-		
-      $screen    = get_current_screen();
-      $screen_id = isset( $screen, $screen->id ) ? $screen->id : '';
-      
-      if ( $screen_id == 'toplevel_page_belo-hide-notifications-settings-page' ) {
-         wp_enqueue_style( $this->plugin_name.'belo-hide', plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin.css', array(), $this->version, 'all' );
-         wp_enqueue_style( $this->plugin_name.'select2', plugin_dir_url( __FILE__ ) . 'css/select2.css', array(), $this->version, 'all' );
-
-      }
-
-
+		 
+      wp_enqueue_style( $this->plugin_name.'belo-general-css', plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-general.css', array(), $this->version, 'all' );
+  
 	}
 
 	/**
@@ -138,42 +130,64 @@ class Belo_Hide_Admin_Notifications_Admin {
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin-hide.js', array( 'jquery' ), $this->version, false );
 
 		}
-     $screen    = get_current_screen();
-     $screen_id = isset( $screen, $screen->id ) ? $screen->id : '';
-     
-     if ( $screen_id == 'toplevel_page_belo-hide-notifications-settings-page' ) {
-      wp_enqueue_script( $this->plugin_name.'select2', plugin_dir_url( __FILE__ ) . 'js/select2.js', array( 'jquery' ), $this->version, false );
-      wp_enqueue_script( $this->plugin_name.'hide', plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin.js', array( 'jquery',$this->plugin_name.'select2' ), $this->version, false );
-
-     }
+      
       
 
 	}
 	public function settings_page() {
-		add_menu_page(
-			__( 'Hide admin dashboard notifications', 'my-textdomain' ),
-			__( 'Hide dashboard notifications', 'my-textdomain' ),
-			'manage_options',
-			'belo-hide-notifications-settings-page',
-			array($this,'settings_page_callback'),
-			'dashicons-schedule',
-			3
-		);
+		 
+      $menu_url = menu_page_url( 'belo_main', false );
+
+      if ( $menu_url ) {
+         add_submenu_page( 'belo_main', __( 'Hide admin dashboard notifications', 'belo-hide-admin-notifications' ), __( 'Hide dashboard notifications', 'belo-hide-admin-notifications' ), 'manage_options', 'belo-hide-admin-notifications', array($this,'settings_page_callback') ); 
+         } else {
+          
+         add_menu_page( "BELO", "BELO", "manage_options", "belo_main",  '', plugin_dir_url( __FILE__ ) .'logo.png'); 
+         add_submenu_page( 'belo_main', __( 'Hide admin dashboard notifications', 'belo-hide-admin-notifications' ), __( 'Hide dashboard notifications', 'belo-hide-admin-notifications' ), 'manage_options', 'belo_main', array($this,'settings_page_callback') ); 
+   
+         add_submenu_page( 'belo_main', 'xxx', 'xxx', 'manage_options', 'admin-cod-menu-hack', false ); 
+   
+      }
+      
 	}
+   
+   public function admin_cod_menu_hack( $submenu_file ) {
+      global $plugin_page;
+      $hidden_item = array(
+          'admin-cod-menu-hack' => true,
+      );
+      foreach ( $hidden_item as $submenu => $unused ) {
+          remove_submenu_page( 'belo_main', $submenu );
+      }
+      return $submenu_file;
+  }
+   
 	 function settings_page_callback() {
+
+      //CSS
+      wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin-hide.css', array(), $this->version, 'all' );
+      wp_enqueue_style( $this->plugin_name.'belo-hide', plugin_dir_url( __FILE__ ) . 'css/belo-hide-admin-notifications-admin.css', array(), $this->version, 'all' );
+      wp_enqueue_style( $this->plugin_name.'select2', plugin_dir_url( __FILE__ ) . 'css/select2.css', array(), $this->version, 'all' );
+
+      //JS
+      wp_enqueue_script( $this->plugin_name.'select2', plugin_dir_url( __FILE__ ) . 'js/select2.js', array( 'jquery' ), $this->version, false );
+      wp_enqueue_script( $this->plugin_name.'hide', plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin.js', array( 'jquery',$this->plugin_name.'select2' ), $this->version, false );
+      wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/belo-hide-admin-notifications-admin-hide.js', array( 'jquery' ), $this->version, false );
+
+
 		?>
 			<div class="">
-         <div class="wrapper" style="
+         <div class=" wrapper belo-hide-notifications-settings-page" style="
     width: 100%;
     margin-bottom: 50px;
     margin-top: 30px;
     height: 40px;
-    background: #cfd9dd url(<?php echo plugin_dir_url( __FILE__ ) .'/belo.png'; ?>) no-repeat;
+    background: #4e52a2 url(<?php echo plugin_dir_url( __FILE__ ) .'belo.png'; ?>) no-repeat;
     display: flex;
     align-items: center;
     padding-right: -23px !important;
 ">
-<img viewbox="0 0 52 52" class="belo-logo" src="<?php echo plugin_dir_url( __FILE__ ) .'/logo.png'; ?>">
+<img viewbox="0 0 52 52" class="belo-logo" src="<?php echo plugin_dir_url( __FILE__ ) .'logo.png'; ?>">
 <h1 translate="no" style="
     color: #ffd600;
     font-size: 16px;
@@ -182,7 +196,7 @@ class Belo_Hide_Admin_Notifications_Admin {
     display: inline-block;
     box-sizing: border-box;
     padding-left: 40px;
-">Hide Admin Dashboard Notifications</h1>
+"> <?php echo  __('Hide Admin Dashboard Notifications', 'belo-hide-admin-notifications'); ?></h1>
 				</div>
   
   
@@ -190,26 +204,24 @@ class Belo_Hide_Admin_Notifications_Admin {
    </div>
 
    <form method="POST" action="">
-   <div class="wrapper" style="
+   <div class=" wrapper belo-hide-notifications-settings-page" style="
       min-width: 920px;
       max-width: 1280px;
       margin-left: 30px;
       ">
       <div  >
          <div>
-            <div class="action-panel shadow-div actions-panel " style="
+            <div class=" action-panel belo-hide-notifications-settings-page shadow-div actions-panel " style="
                background: #fff;
                border: 1px solid #d6d6d6;
                box-shadow: 0 1px 8px 0 rgb(0 0 0 / 5%), 0 2px 1px 0 rgb(0 0 0 / 3%);
-               border-radius: 6px;
+               border-radius: 0px;
                ">
                <div class="panel-header-wrap panel-open has-summary-no-child" id="wpmdb-action-buttons" style="
                   grid-template-columns: auto;
-                  padding-top: 30px;
+                  padding-top: 15px;
                   ">
-                  <h2  id="panel-title-action_buttons" class="panel-title">GENERAL SETTINGS
-
-</h2>
+                  <h2  id="panel-title-action_buttons" class="panel-title"><?php echo __('General settings', 'belo-hide-admin-notifications'); ?> </h2>
                </div>
                <div class="panel-open panel-body-wrap" style="
                   position: relative;
@@ -274,7 +286,8 @@ class Belo_Hide_Admin_Notifications_Admin {
 							
 									?></h4>
                            <div>
-                              Select the admin accounts to hide the dashboard notifications
+                           <?php echo  __('Select the admin accounts to hide the dashboard notifications', 'belo-hide-admin-notifications'); ?>
+                             
                            </div>
                               </div>
                            </div>
@@ -286,9 +299,10 @@ class Belo_Hide_Admin_Notifications_Admin {
          </div>
       </div>
    </div>
-   <div class="wrapper">
+   <div class=" wrapper belo-hide-notifications-settings-page">
       <div class="sc-bdVaJa dFpchr" style="margin-top:30px !important"> 
-       <input type="submit" value="Save" class="btn submit_data" > 
+       <input class="belo-hide-notifications-settings-page-save-button" type="submit" value="<?php echo __('Save', 'belo-hide-admin-notifications'); ?>
+" class="btn submit_data" > 
          </div> 
    </div> 
    </form>

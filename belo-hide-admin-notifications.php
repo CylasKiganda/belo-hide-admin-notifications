@@ -37,6 +37,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'BELO_HIDE_ADMIN_NOTIFICATIONS_VERSION', '1.0.111111111111111111111' );
 
+ 
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-belo-hide-admin-notifications-activator.php

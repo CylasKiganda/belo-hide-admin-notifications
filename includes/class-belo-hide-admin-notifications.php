@@ -157,6 +157,7 @@ class Belo_Hide_Admin_Notifications {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'settings_page' );
+		$this->loader->add_filter( 'submenu_file',$plugin_admin,  'admin_cod_menu_hack' );
 
 	}
 

@@ -34,13 +34,7 @@
             placeholder: "", 
             multiple: true,
           });
-
-        // $(document).on('click','.submit_data',function(){
-        //     alert('elo');
-        // });
   
-       
-      
     });
   })(jQuery);
   

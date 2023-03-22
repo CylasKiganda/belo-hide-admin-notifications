@@ -2,81 +2,90 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
- .belo-hide-notifications-settings-page.wrapper {
-    min-width: 920px;
-    max-width: 1280px;
-    margin-left: 30px;
+.belo-hide-notifications-settings-page.wrapper {
+  min-width: 920px;
+  max-width: 1280px;
+  margin-left: 30px;
 }
-.select2-dropdown{
-    width: 600px !important;
+#belo_hide_admin_notifications_admin_data {
+  opacity: 0 !important;
+  height: 90px;
 }
- #wpcontent {
-    padding-left: 0px !important;
+.belo-hide-notifications-settings-page.wrapper input[type="submit"]:hover {
+  background-color: #0f031af5 !important;
 }
-.action-panel.belo-hide-notifications-settings-page .panel-header-wrap.has-summary-no-child {
-    display: grid;
-    grid-template-columns: 195px 1px 4fr;
-    padding: 8px 1.25rem;
-    min-height: 40px;
+.select2-dropdown {
+  width: 600px !important;
+}
+#wpcontent {
+  padding-left: 0px !important;
+}
+.action-panel.belo-hide-notifications-settings-page
+  .panel-header-wrap.has-summary-no-child {
+  display: grid;
+  grid-template-columns: 195px 1px 4fr;
+  padding: 8px 1.25rem;
+  min-height: 40px;
 }
 .belo-hide-notifications-settings-page.wrapper input[type="submit"] {
-    background-color: #4e52a2 !important;
-    color: #fff;
-    border-radius: 4px !important;
-    font-size: .8rem !important;
-    text-transform: uppercase !important;
-    font-weight: 700;
-    padding: 10px 80px !important;
-    border: 1px solid #4e52a2 !important;
-    letter-spacing: .05rem;
-    cursor: pointer;
-    text-align: center;
-    white-space: nowrap;
+  background-color: #4e52a2 !important;
+  color: #fff;
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  font-weight: 700;
+  padding: 10px 80px !important;
+  border: 1px solid #4e52a2 !important;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
 }
- .select2-container--default .select2-selection--multiple {
-     width: 600px!important;
-    border-radius: 8px !important;
-   
-}
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
-    color: #ffeb9b;
-    background-color: #4e52a2 !important;
-    border-radius: 12px !important;
-    padding: 3px 30px 3px 11px !important;
-    border: 1px solid #4e52a2 !important;
-    position: relative !important;
-}
-.select2-container--default .select2-selection--multiple { 
-    padding: 4px 6px !important; 
-}
-.select2-container .select2-selection--multiple { 
-    min-height: 80px !important; 
-    margin-top: 10px !important;
+.select2-container--default .select2-selection--multiple {
+  width: 600px !important;
+  border-radius: 8px !important;
 }
 .select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice__remove {
-    color: #ff6464!important; 
-    font-weight: bold!important;
-    font-size: 16px!important;
-    position: absolute !important;
-    right: 2px!important;
-    padding: 0 7px;
-    margin-top: -1px !important;
+  .select2-selection--multiple
+  .select2-selection__choice {
+  color: #ffeb9b;
+  background-color: #4e52a2 !important;
+  border-radius: 12px !important;
+  padding: 3px 30px 3px 11px !important;
+  border: 1px solid #4e52a2 !important;
+  position: relative !important;
 }
- #wpfooter {
-    display: none !important; 
+.select2-container--default .select2-selection--multiple {
+  padding: 4px 6px !important;
 }
-.bhan-wrapper{
-    min-width: 920px;
-    max-width: 1280px;
-    margin-left: 30px;
-    display: grid;
+.select2-container .select2-selection--multiple {
+  min-height: 80px !important;
+  margin-top: 10px !important;
 }
-.belo-logo{  
-    filter: drop-shadow(0 1px 4px rgba(0,0,0,.2));
-    width: 70px;
-    height: 70px;
-    border-radius: 50px;
-    margin-left: -6px;
-} 
+.select2-container--default
+  .select2-selection--multiple
+  .select2-selection__choice__remove {
+  color: #ff6464 !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  position: absolute !important;
+  right: 2px !important;
+  padding: 0 7px;
+  margin-top: -1px !important;
+}
+#wpfooter {
+  display: none !important;
+}
+.bhan-wrapper {
+  min-width: 920px;
+  max-width: 1280px;
+  margin-left: 30px;
+  display: grid;
+}
+.belo-logo {
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  margin-left: -6px;
+}

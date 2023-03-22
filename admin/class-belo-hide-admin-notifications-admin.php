@@ -283,7 +283,7 @@ class Belo_Hide_Admin_Notifications_Admin {
                            $selected_users_data = get_option('belo_hide_admin_notifications_admin_data');
 
                             
-									$output_res = '<select name="belo_hide_admin_notifications_admin_data[]" id="belo_hide_admin_notifications_admin_data" multiple="multiple">';
+									$output_res = '<select  name="belo_hide_admin_notifications_admin_data[]"  id="belo_hide_admin_notifications_admin_data" multiple="multiple">';
 									foreach ( $users_data as $user ) {
 
                               if(empty($selected_users_data)){
@@ -306,10 +306,11 @@ class Belo_Hide_Admin_Notifications_Admin {
 									}
 
 									$output_res .= '</select>';
-									
+									 
 									echo wp_kses( $output_res,
                            array(
-                               'select'      => array(
+                               'select'      => array( 
+                                 'style' => array(),
                                    'name'  => array(),
                                    'id' => array(),
                                    'multiple' => array(),

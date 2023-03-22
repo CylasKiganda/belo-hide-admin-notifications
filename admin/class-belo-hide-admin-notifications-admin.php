@@ -187,7 +187,7 @@ class Belo_Hide_Admin_Notifications_Admin {
     align-items: center;
     padding-right: -23px !important;
 ">
-        <img style="border-radius: 50px;" viewbox="0 0 52 52" width="70" height="70" class="belo-logo"
+        <img style="border-radius: 11px;" viewbox="0 0 52 52" width="70" height="70" class="belo-logo"
             src="<?php echo plugin_dir_url( __FILE__ ) .'logo.png'; ?>">
         <h1 translate="no" style="
     color: #ffd600;

@@ -2,9 +2,9 @@
 
 Contributors:      cylas
 Requires at least: 5.2 or higher
-Tested up to:      6.1
+Tested up to:      6.2
 Requires PHP:      5.6
-Stable tag:        1.0.1
+Stable tag:        1.0.0
 Donate link:       https://www.buymeacoffee.com/BELOCODES
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html

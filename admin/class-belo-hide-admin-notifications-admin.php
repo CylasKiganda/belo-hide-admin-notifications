@@ -267,7 +267,13 @@ class Belo_Hide_Admin_Notifications_Admin {
                               
                               $success_alert = '<div class="container" style=" position: absolute; left: 510px; top: 0; "> <div class="notification success"> 
                                 <span style=" color: #22c45c; ">'.__("Saved successfully!", "belo-hide-admin-notifications").'</span></div></div>';
-                              echo  $success_alert;
+                               echo wp_kses( $success_alert,
+                                 array(
+                                    'span'      => array(
+                                       'style'  => array(), 
+                                    ),
+                                    'div'     => array(),
+                                 ));
                             }
 
                            $selected_users_data = get_option('belo_hide_admin_notifications_admin_data');
@@ -297,7 +303,18 @@ class Belo_Hide_Admin_Notifications_Admin {
 
 									$output_res .= '</select>';
 									
-									echo $output_res;
+									echo wp_kses( $output_res,
+                           array(
+                               'select'      => array(
+                                   'name'  => array(),
+                                   'id' => array(),
+                                   'multiple' => array(),
+                               ),
+                               'option'     => array(
+                                 'value'  => array(),
+                                 'selected' => array(),
+                             ) 
+                           ));
 							
 									?></h4>
                                             <div>

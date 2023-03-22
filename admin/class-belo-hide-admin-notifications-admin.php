@@ -176,8 +176,8 @@ class Belo_Hide_Admin_Notifications_Admin {
 
 
 		?>
-			<div class="">
-         <div class=" wrapper belo-hide-notifications-settings-page" style="
+<div class="">
+    <div class=" wrapper belo-hide-notifications-settings-page" style="
     width: 100%;
     margin-bottom: 50px;
     margin-top: 30px;
@@ -187,8 +187,9 @@ class Belo_Hide_Admin_Notifications_Admin {
     align-items: center;
     padding-right: -23px !important;
 ">
-<img style="border-radius: 50px;" viewbox="0 0 52 52" width="70" height="70" class="belo-logo" src="<?php echo plugin_dir_url( __FILE__ ) .'logo.png'; ?>">
-<h1 translate="no" style="
+        <img style="border-radius: 50px;" viewbox="0 0 52 52" width="70" height="70" class="belo-logo"
+            src="<?php echo plugin_dir_url( __FILE__ ) .'logo.png'; ?>">
+        <h1 translate="no" style="
     color: #ffd600;
     font-size: 16px;
     font-weight: 700;
@@ -197,37 +198,38 @@ class Belo_Hide_Admin_Notifications_Admin {
     box-sizing: border-box;
     padding-left: 40px;
 "> <?php echo  __('Hide Admin Dashboard Notifications', 'belo-hide-admin-notifications'); ?></h1>
-				</div>
-  
-  
-  
-   </div>
+    </div>
 
-   <form method="POST" action="">
-   <div class=" wrapper belo-hide-notifications-settings-page" style="
+
+
+</div>
+
+<form method="POST" action="">
+    <div class=" wrapper belo-hide-notifications-settings-page" style="
       min-width: 920px;
       max-width: 1280px;
       margin-left: 30px;
       ">
-      <div  >
-         <div>
-            <div class=" action-panel belo-hide-notifications-settings-page shadow-div actions-panel " style="
+        <div>
+            <div>
+                <div class=" action-panel belo-hide-notifications-settings-page shadow-div actions-panel " style="
                background: #fff;
                border: 1px solid #d6d6d6;
                box-shadow: 0 1px 8px 0 rgb(0 0 0 / 5%), 0 2px 1px 0 rgb(0 0 0 / 3%);
                border-radius: 0px;
                ">
-               <div class="panel-header-wrap panel-open has-summary-no-child" id="wpmdb-action-buttons" style="
+                    <div class="panel-header-wrap panel-open has-summary-no-child" id="wpmdb-action-buttons" style="
                   grid-template-columns: auto;
                   padding-top: 15px;
                   ">
-                  <h2  id="panel-title-action_buttons" class="panel-title"><?php echo __('General settings', 'belo-hide-admin-notifications'); ?> </h2>
-               </div>
-               <div class="panel-open panel-body-wrap" style="
+                        <h2 id="panel-title-action_buttons" class="panel-title">
+                            <?php echo __('General settings', 'belo-hide-admin-notifications'); ?> </h2>
+                    </div>
+                    <div class="panel-open panel-body-wrap" style="
                   position: relative;
                   ">
-                  <div id="action_buttons" style="overflow: hidden; opacity: 1;">
-                     <div class="open panel-body" style="
+                        <div id="action_buttons" style="overflow: hidden; opacity: 1;">
+                            <div class="open panel-body" style="
                         padding: 26px 22px;
                         background: #fff;
                         border-top: 1px solid #d6d6d6;
@@ -235,11 +237,13 @@ class Belo_Hide_Admin_Notifications_Admin {
                         grid-template-columns: none;
                         border-radius: 0 0 6px 6px;
                         ">
-                        <div class="action-buttons btn-section" style=" margin-bottom: 0!important; display: grid; grid-template-columns: repeat(1,minmax(0,1fr)); padding: 0rem 0em 1.5rem 0rem; ">
-                        <h4 style=" margin: 0px !important; "><?php echo  __('Admin accounts', 'belo-hide-admin-notifications'); ?></h4>
-                        <div >
-                              <div >
-                                 <h4  style=" margin-top: 0px !important; "><?php 
+                                <div class="action-buttons btn-section"
+                                    style=" margin-bottom: 0!important; display: grid; grid-template-columns: repeat(1,minmax(0,1fr)); padding: 0rem 0em 1.5rem 0rem; ">
+                                    <h4 style=" margin: 0px !important; ">
+                                        <?php echo  __('Admin accounts', 'belo-hide-admin-notifications'); ?></h4>
+                                    <div>
+                                        <div>
+                                            <h4 style=" margin-top: 0px !important; "><?php 
 									$args = array(
 										'role'    => 'administrator',
 										'orderby' => 'user_nicename',
@@ -248,8 +252,18 @@ class Belo_Hide_Admin_Notifications_Admin {
 									$users_data = get_users( $args );
 
 									if(isset($_POST['belo_hide_admin_notifications_admin_data'])){
-                              $selectedusersOptions = $_POST['belo_hide_admin_notifications_admin_data'];
-                              Update_option('belo_hide_admin_notifications_admin_data',array_map( 'sanitize_text_field', $selectedusersOptions ));
+                             
+                                 // Initialize the new array that will hold the sanitize values
+                                 $selectedusersOptions = array();
+                              
+                                 // Loop through the input and sanitize each of the values
+                                 foreach ( $_POST['belo_hide_admin_notifications_admin_data'] as $key => $val ) {
+                                    $selectedusersOptions[ $key ] = sanitize_text_field( $val );
+                                 }
+                               
+                              
+                              
+                              Update_option('belo_hide_admin_notifications_admin_data', $selectedusersOptions  );
                               
                               $success_alert = '<div class="container" style=" position: absolute; left: 510px; top: 0; "> <div class="notification success"> 
                                 <span style=" color: #22c45c; ">'.__("Saved successfully!", "belo-hide-admin-notifications").'</span></div></div>';
@@ -286,29 +300,29 @@ class Belo_Hide_Admin_Notifications_Admin {
 									echo $output_res;
 							
 									?></h4>
-                           <div>
-                           <?php echo  __('Select the admin accounts to hide the dashboard notifications', 'belo-hide-admin-notifications'); ?>
-                             
-                           </div>
-                              </div>
-                           </div>
+                                            <div>
+                                                <?php echo  __('Select the admin accounts to hide the dashboard notifications', 'belo-hide-admin-notifications'); ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
-   <div class=" wrapper belo-hide-notifications-settings-page">
-      <div class="sc-bdVaJa dFpchr" style="margin-top:30px !important"> 
-       <input class="belo-hide-notifications-settings-page-save-button" type="submit" value="<?php echo __('Save', 'belo-hide-admin-notifications'); ?>
-" class="btn submit_data" > 
-         </div> 
-   </div> 
-   </form>
+        </div>
+    </div>
+    <div class=" wrapper belo-hide-notifications-settings-page">
+        <div class="sc-bdVaJa dFpchr" style="margin-top:30px !important">
+            <input class="belo-hide-notifications-settings-page-save-button" type="submit" value="<?php echo __('Save', 'belo-hide-admin-notifications'); ?>
+" class="btn submit_data">
+        </div>
+    </div>
+</form>
 </div>
-		<?php
+<?php
        
       
      

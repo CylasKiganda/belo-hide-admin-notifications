@@ -269,10 +269,14 @@ class Belo_Hide_Admin_Notifications_Admin {
                                 <span style=" color: #22c45c; ">'.__("Saved successfully!", "belo-hide-admin-notifications").'</span></div></div>';
                                echo wp_kses( $success_alert,
                                  array(
+                                    'div'     => array(
+                                       'style'  => array(), 
+                                       'class'  => array(), 
+                                    ),
                                     'span'      => array(
                                        'style'  => array(), 
                                     ),
-                                    'div'     => array(),
+                                    
                                  ));
                             }
 
